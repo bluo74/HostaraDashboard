@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HostaraDashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    #mainContainer {
+      display: none; /* Masqué par défaut */
+    }
+  </style>
+</head>
+<body>
+  <div id="loginContainer">
+    <h2>Connexion - HostaraDashboard</h2>
+    <p id="loginError" class="error-message" style="display:none;">Identifiant ou mot de passe incorrect.</p>
+    <input type="text" id="loginUsername" placeholder="Nom d'utilisateur">
+    <input type="password" id="loginPassword" placeholder="Mot de passe">
+    <button id="loginBtn">Se connecter</button>
+  </div>
+
+  <!-- 🟦 Main dashboard masqué au début -->
+  <div id="mainContainer">
+    <div class="dashboard">
+      <nav class="sidebar">
+        <ul id="sidebarMenu">
+          <li id="logoutBtn"><i data-feather="log-out"></i> Déconnexion</li>
+          <li class="active" data-page="clients">
+            <i data-feather="users"></i>
+            <span>Clients</span>
+          </li>
+        </ul>
+      </nav>
+
+      <main class="main">
+        <header class="topbar">
+          <h1>Tableau de bord</h1>
+        </header>
+
+        <section class="content">
+          <div class="header-row">
+            <h2>Clients</h2>
+            <input type="text" id="searchInput" placeholder="🔍 Rechercher..." />
+            <button id="addClientBtn"><i data-feather="user-plus"></i> Ajouter</button>
+            <button id="resetBtn"><i data-feather="refresh-ccw"></i> Réinitialiser</button>
+          </div>
+
+          <div id="clientForm" class="form-container">
+            <input type="text" id="nameInput" placeholder="Nom d'utilisateur" />
+            <input type="email" id="emailInput" placeholder="Email" />
+            <select id="serverInput">
+              <option disabled selected>Type de serveur</option>
+              <option value="FiveM">FiveM</option>
+              <option value="Gmod">Gmod</option>
+              <option value="Nova-Life">Nova-Life</option>
+              <option value="Minecraft">Minecraft</option>
+            </select>
+            <select id="statusInput">
+              <option disabled selected>Statut</option>
+              <option value="Client">Client</option>
+              <option value="Test">Test</option>
+              <option value="Expiré">Expiré</option>
+            </select>
+            <button id="submitClient"><i data-feather="check-circle"></i> Ajouter</button>
+          </div>
+
+          <table>
+            <thead>
+              <tr>
+                <th>Nom</th>
+                <th>Email</th>
+                <th>Serveur</th>
+                <th>Statut</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="clients-table"></tbody>
+          </table>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/feather-icons"></script>
+  <script src="script.js"></script>
+</body>
+</html>
